@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
 public class ProductController : Controller
 {
   // this controller depends on the NorthwindRepository
@@ -10,4 +10,6 @@ public class ProductController : Controller
     ViewBag.id = id;
     return View(_dataContext.Categories.OrderBy(c => c.CategoryName));
   }
+
+
 }
