@@ -79,3 +79,11 @@ body {
 #product_rows tr {
 cursor: pointer;
 }
+
+th {
+    padding: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}

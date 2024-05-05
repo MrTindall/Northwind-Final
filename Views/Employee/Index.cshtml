@@ -1,10 +1,47 @@
 @model IEnumerable<Product>
+<table>
+    <tr>
+        <th scope="col">
+            <input type="checkbox" id="filterUnitsOnOrder">
+            <label for="filterUnitsOnOrder">Units On Order</label>
+        </th>
+        <th scope="col">
+            <input type="checkbox" id="filterDiscontinued">
+            <label for="filterDiscontinued">Discontinued</label>
+        </th>
+        <th scope="col">
+            <input type="checkbox" id="filterNeedReorder">
+            <label for="filterNeedReorder">Needs Reorder</label>
+        </th>
 
-<ul>
-@foreach (Product p in Model)
-{
-
-    <li>@p.ProductName</li>
-
-}
-</ul>
+    </tr>
+</table>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Product ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Quantity Per Unit</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Units In Stock</th>
+            <th scope="col">Units On Order</th>
+            <th scope="col">Reorder Level</th>
+            <th scope="col">Discontinued</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.QuantityPerUnit</td>
+                <td>@product.UnitPrice</td>
+                <td>@product.UnitsInStock</td>
+                <td>@product.UnitsOnOrder</td>
+                <td>@product.ReorderLevel</td>
+                <td>@product.Discontinued</td>
+            </tr>
+        }
+    </tbody>
+</table>
