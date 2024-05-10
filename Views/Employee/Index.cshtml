@@ -26,22 +26,32 @@
             <th scope="col">Units In Stock</th>
             <th scope="col">Units On Order</th>
             <th scope="col">Reorder Level</th>
-            <th scope="col">Discontinued</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var product in Model)
         {
-            <tr>
-                <td>@product.ProductId</td>
-                <td>@product.ProductName</td>
-                <td>@product.QuantityPerUnit</td>
-                <td>@product.UnitPrice</td>
-                <td>@product.UnitsInStock</td>
-                <td>@product.UnitsOnOrder</td>
-                <td>@product.ReorderLevel</td>
-                <td>@product.Discontinued</td>
+            string modifier = "";
+
+            @if (product.Discontinued) {
+                modifier += " discontinued";
+            } else {
+                modifier += " not";
+            }
+            @if (product.UnitsInStock < product.ReorderLevel)
+            {
+                modifier += " employeeProductLow";
+            }
+            <tr class="employeeProduct@(modifier)">
+                <td class="employeeProduct">@product.ProductId</td>
+                <td class="employeeProduct">@product.ProductName</td>
+                <td class="employeeProduct">@product.QuantityPerUnit</td>
+                <td class="employeeProduct">@product.UnitPrice</td>
+                <td class="employeeProduct">@product.UnitsInStock</td>
+                <td class="employeeProduct">@product.UnitsOnOrder</td>
+                <td class="employeeProduct">@product.ReorderLevel</td>
             </tr>
         }
     </tbody>
 </table>
+

@@ -87,3 +87,12 @@ th {
 input[type="checkbox"] {
     margin-right: 5px;
 }
+
+.employeeProductLow {
+    background-color: yellow;
+    font-style: italic;
+}
+
+.employeeProductZero {
+    background-color: red;
+}
