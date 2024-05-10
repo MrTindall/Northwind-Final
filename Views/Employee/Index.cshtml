@@ -1,5 +1,5 @@
 @model IEnumerable<Product>
-<table>
+@* <table>
     <tr>
         <th scope="col">
             <input type="checkbox" id="filterUnitsOnOrder">
@@ -14,7 +14,7 @@
             <label for="filterNeedReorder">Needs Reorder</label>
         </th>
 
-    </tr>
+    </tr> *@
 </table>
 <table class="table table-hover">
     <thead>
@@ -32,24 +32,21 @@
         @foreach (var product in Model)
         {
             string modifier = "";
-
-            @if (product.Discontinued) {
-                modifier += " discontinued";
-            } else {
-                modifier += " not";
-            }
             @if (product.UnitsInStock < product.ReorderLevel)
             {
                 modifier += " employeeProductLow";
             }
-            <tr class="employeeProduct@(modifier)">
-                <td class="employeeProduct">@product.ProductId</td>
-                <td class="employeeProduct">@product.ProductName</td>
-                <td class="employeeProduct">@product.QuantityPerUnit</td>
-                <td class="employeeProduct">@product.UnitPrice</td>
-                <td class="employeeProduct">@product.UnitsInStock</td>
-                <td class="employeeProduct">@product.UnitsOnOrder</td>
-                <td class="employeeProduct">@product.ReorderLevel</td>
+            @if (product.UnitsInStock == 0) {
+                modifier += " employeeProductZero";
+            }
+            <tr class="employeeProduct">
+                <td class="employeeProduct@(modifier)">@product.ProductId</td>
+                <td class="employeeProduct@(modifier)">@product.ProductName</td>
+                <td class="employeeProduct@(modifier)">@product.QuantityPerUnit</td>
+                <td class="employeeProduct@(modifier)">@product.UnitPrice</td>
+                <td class="employeeProduct@(modifier)">@product.UnitsInStock</td>
+                <td class="employeeProduct@(modifier)">@product.UnitsOnOrder</td>
+                <td class="employeeProduct@(modifier)">@product.ReorderLevel</td>
             </tr>
         }
     </tbody>

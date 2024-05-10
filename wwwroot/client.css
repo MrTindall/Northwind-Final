@@ -88,11 +88,10 @@ input[type="checkbox"] {
     margin-right: 5px;
 }
 
-.employeeProductLow {
-    background-color: yellow;
-    font-style: italic;
+tr .employeeProductLow {
+    background-color: rgb(244, 244, 75);
 }
 
-.employeeProductZero {
-    background-color: red;
+tr .employeeProductZero {
+    background-color: rgba(191, 57, 57,.7);
 }
