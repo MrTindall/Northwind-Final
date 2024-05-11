@@ -1,5 +1,13 @@
 @model IEnumerable<Product>
-
+<div class="legend">
+    <h5>Reorder Status</h5>
+    <ul class="inline">
+        <li><span class="legend-color" style="background-color: rgb(75, 193, 244, .7);"></span> On Order</li>
+        <li><span class="legend-color" style="background-color: rgb(244, 244, 75);"></span> Low Stock</li>
+        <li><span class="legend-color" style="background-color: rgba(224, 128, 3, 0.9);"></span> Zero Stock, On Reorder</li>
+        <li><span class="legend-color" style="background-color: rgba(191, 57, 57,.7);"></span> Zero Stock, Not On Reorder</li>
+    </ul>
+</div>
 </table>
 <table class="table table-hover">
     <thead>
@@ -17,11 +25,20 @@
         @foreach (var product in Model)
         {
             string modifier = "";
-            @if (product.UnitsInStock < product.ReorderLevel)
+            @if(product.UnitsOnOrder > 0 && product.UnitsInStock > 0) 
+            {
+                modifier += " employeeProductOnOrder";
+            }
+            else if (product.UnitsInStock < product.ReorderLevel)
             {
                 modifier += " employeeProductLow";
             }
-            @if (product.UnitsInStock == 0) {
+            
+            @if (product.UnitsInStock == 0 && product.UnitsOnOrder > 0) {
+                modifier += " employeeProductZeroOnRedorder";
+            }
+            else if (product.UnitsInStock == 0 && product.UnitsOnOrder == 0)
+            {
                 modifier += " employeeProductZero";
             }
             <tr class="employeeProduct">

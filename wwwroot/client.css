@@ -92,6 +92,35 @@ tr .employeeProductLow {
     background-color: rgb(244, 244, 75);
 }
 
+tr .employeeProductOnOrder {
+    background-color: rgb(75, 193, 244, .7);
+}
+
+tr .employeeProductZeroOnRedorder {
+    background-color: rgba(224, 128, 3, 0.9);
+}
+
 tr .employeeProductZero {
     background-color: rgba(191, 57, 57,.7);
+}
+
+.legend ul {
+    list-style: none;
+    padding: 0;
+}
+
+.legend ul.inline li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+h5 {
+    padding-top: 10px;
 }
